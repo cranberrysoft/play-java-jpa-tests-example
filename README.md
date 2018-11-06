@@ -29,6 +29,10 @@ public class MyDbTest extends TestServerBase {
  ```
 
 ## Running tests
-`sbt test`
+```bash
+sbt test
+```
 
+---
+### Credits
 *Mariusz Dubielecki* [cranberrysoft.com](http://cranberrysoft.com) 
