@@ -13,6 +13,8 @@ import java.util.Map;
 
 public abstract class TestServerBase extends WithServer {
 
+    public static final String H2_DRIVER = "org.h2.Driver";
+
     public abstract String dbName();
 
     public String getDbUrl() {
@@ -23,7 +25,7 @@ public abstract class TestServerBase extends WithServer {
     protected Application provideApplication() {
         final String dbName = dbName();
         final Map config = new HashMap();
-        config.put(String.format("db.%s.driver", dbName), "org.h2.Driver");
+        config.put(String.format("db.%s.driver", dbName), H2_DRIVER);
         config.put(String.format("db.%s.url", dbName), getDbUrl());
         config.put(String.format("db.%s.username", dbName), "");
         config.put(String.format("db.%s.password", dbName), "");
@@ -34,7 +36,7 @@ public abstract class TestServerBase extends WithServer {
 
     @Before
     public void runEvolutions() {
-        final Database db = Databases.createFrom(dbName(), "org.h2.Driver", getDbUrl());
+        final Database db = Databases.createFrom(dbName(), H2_DRIVER, getDbUrl());
         final JPAApi jpaApi = app.injector().instanceOf(JPAApi.class);
         jpaApi.withTransaction(()->{ //for older playframework you can use JPA.withTransaction
             Evolutions.applyEvolutions(db);
@@ -43,7 +45,7 @@ public abstract class TestServerBase extends WithServer {
 
     @After
     public void deleteEvolutions() {
-        final Database db = Databases.createFrom(dbName(), "org.h2.Driver", getDbUrl());
+        final Database db = Databases.createFrom(dbName(), H2_DRIVER, getDbUrl());
         final JPAApi jpaApi = app.injector().instanceOf(JPAApi.class);
         jpaApi.withTransaction(()->{
             Evolutions.cleanupEvolutions(db);
