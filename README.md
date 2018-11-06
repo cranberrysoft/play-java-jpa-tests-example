@@ -4,3 +4,5 @@ This project demonstrates how to create a simple model tests with Play 2.6, Evol
 
 ### Running tests
 `sbt test`
+
+*Mariusz Dubielecki* [cranberrysoft.com](http://cranberrysoft.com) 
