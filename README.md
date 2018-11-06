@@ -13,7 +13,7 @@ INSERT INTO Person VALUES (1, 'Mariusz')
 
 + Implement test
 ```java
-public class JPAPersonRepositoryTestDb1 extends TestServerBase {
+public class MyDbTest extends TestServerBase {
  
      @Override
      public String dbName() {
