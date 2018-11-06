@@ -1,5 +1,9 @@
 name := """play-java-jpa-tests-example"""
 
+organization := "com.cranberrysoft"
+
+organizationHomepage := Some(url("http://cranberrysoft.com"))
+
 version := "1.0-SNAPSHOT"
 
 lazy val root = (project in file(".")).enablePlugins(PlayJava)
@@ -13,6 +17,5 @@ libraryDependencies += javaJpa
 libraryDependencies += evolutions
 libraryDependencies += "com.h2database" % "h2" % "1.4.197"
 libraryDependencies += "org.hibernate" % "hibernate-core" % "5.2.17.Final"
-libraryDependencies += "org.assertj" % "assertj-core" % "3.6.2" % "test"
-libraryDependencies += "org.mockito" % "mockito-core" % "2.1.0" % "test"
+
 testOptions in Test += Tests.Argument(TestFrameworks.JUnit, "-a", "-v")
